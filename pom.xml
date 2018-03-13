@@ -61,11 +61,11 @@
 		<!-- <scope>compile</scope> -->
 		<!-- </dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/home -->
-		<dependency>
-			<groupId>org.primefaces.themes</groupId>
-			<artifactId>home</artifactId>
-			<version>1.0.10</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.primefaces.themes</groupId> -->
+<!-- 			<artifactId>home</artifactId> -->
+<!-- 			<version>1.0.10</version> -->
+<!-- 		</dependency> -->
 
 
 		<dependency>
@@ -83,13 +83,11 @@
 		</dependency>
 
 		<!-- Web Service Correios -->
-		<dependency>
-			<groupId>com.github.felipecaparelli</groupId>
-			<artifactId>correios-client</artifactId>
-			<version>1.0.1</version>
-		</dependency>
-
-
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.github.felipecaparelli</groupId> -->
+<!-- 			<artifactId>correios-client</artifactId> -->
+<!-- 			<version>1.0.1</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 	<build>
 
