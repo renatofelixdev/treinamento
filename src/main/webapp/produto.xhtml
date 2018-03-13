@@ -7,7 +7,7 @@
 
 <h:head>
 
-<style>
+	<style>
 .ui-layout-unit {
 	border: 0px;
 }
@@ -21,111 +21,85 @@
 	overflow: visible;
 }
 </style>
+
 </h:head>
-
-
 
 <h:body style="background:#c2c2c2">
 	<p:layout fullPage="true">
 
 		<p:layoutUnit position="north" size="65">
-
 			<h:form>
 				<p:menubar>
 					<p:menuitem value="Produtos" url="produto.xhtml" />
 				</p:menubar>
-
 			</h:form>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center">
 
 			<h:form id="form">
-
 				<p:growl id="messages" showDetail="true" sticky="true" />
 
 				<p:panel id="toggleable" header="Cadastro de Produtos"
 					toggleable="true" toggleSpeed="500" closeSpeed="500"
 					widgetVar="panel" style="margin-bottom:20px">
 					<h:panelGrid columns="2">
-						<h:outputLabel for="desc" value="#{msg['campo.descricao']}:" />
+						<h:outputLabel for="desc" value="#{msg['produto.descricao']}:" />
 						<p:inputText id="desc" value="#{produtoBean.produto.descricao}"
 							required="true" requiredMessage="#{msg['warning.descricao']}" />
 
-						<p:outputLabel for="preco" value="#{msg['campo.preco']}:" />
+						<p:outputLabel for="preco" value="#{msg['produto.preco']}:" />
 						<p:inputText id="preco" value="#{produtoBean.produto.preco}"
 							required="true" />
 
-						<p:outputLabel for="tipo" value="#{msg['leg.tipo.produto']}" />
+						<p:outputLabel for="tipo" value="#{msg['produto.tipo']}" />
 
 						<p:selectOneMenu id="tipo" value="#{produtoBean.produto.tipo}"
 							style="width:125px" required="true">
-							<f:selectItem itemLabel="#{msg['campo.sel.tipo']}" itemValue="" />
-							<f:selectItem itemLabel="#{msg['campo.tipo1']}"
-								itemValue="#{msg['campo.tipo1']}" />
-							<f:selectItem itemLabel="#{msg['campo.tipo2']}"
-								itemValue="#{msg['campo.tipo2']}" />
-							<f:selectItem itemLabel="#{msg['campo.tipo3']}"
-								itemValue="#{msg['campo.tipo3']}" />
+							<f:selectItem itemLabel="Selecione um tipo" itemValue="" />
+							<f:selectItems value="#{produtoBean.tipos()}" 
+							var="tipo" itemLabel="#{tipo}" itemValue="#{tipo}"/>
 						</p:selectOneMenu>
-						<p:commandButton value="#{msg['botao.importar']}" immediate="true"
-							action="#{wBProduto.importarObras('http://www.json-generator.com/api/json/get/cqjiDOWlsO?indent=0', true)}"
-							update="@form :#{p:component('table')}" />
-
+						
 						<p:commandButton value="#{msg['botao.salvar']}"
 							actionListener="#{produtoBean.salvaProduto()}" ajax="true"
-							update="@form :#{p:component('table')} :#{p:component('messages')}" />
-
+							update="@form :#{p:component('messages')} :#{p:component('table')}" />
 
 					</h:panelGrid>
 				</p:panel>
 			</h:form>
 
-
 			<h:form>
-
-
-				<p:panel id="toggleable2" header="Lista de Produtos"
+				<p:panel id="toggleable2" header="#{msg['produto.lista']}"
 					toggleable="true" toggleSpeed="500" closeSpeed="500"
 					widgetVar="panel2" style="margin-bottom:20px">
+					
 					<h:panelGrid columns="1">
-						<p:commandButton value="Relatório" ajax="false"
-							style="float:right;" immediate="true"
-							icon="ui-icon-arrowthick-1-s">
-							<p:fileDownload value="#{produtoBean.downloadRelatorio()}" />
-						</p:commandButton>
 						<p:dataTable id="table" var="produto"
 							value="#{produtoBean.listarProdutos()}">
 
-							<p:column headerText="#{msg['campo.descricao']}">
+							<p:column headerText="#{msg['produto.descricao']}">
 								<h:outputText value="#{produto.descricao}" />
 							</p:column>
 
-							<p:column headerText="#{msg['campo.tipo']}"
+							<p:column headerText="#{msg['produto.tipo']}"
 								style="text-align:center;">
 								<h:outputText value="#{produto.tipo}" />
 							</p:column>
 
-							<p:column headerText="#{msg['campo.preco']}">
+							<p:column headerText="#{msg['produto.preco']}">
 								<h:outputText value="#{produto.preco}">
 									<f:convertNumber pattern="R$ #,##0.00" />
 								</h:outputText>
 							</p:column>
-							<p:column>
-								<p:commandButton actionListener="#{produtoBean.editar(produto)}"
-									value="Editar" update="@form :#{p:component('form')}"
-									ajax="true">
+<!-- 							<p:column> -->
+<!-- 								<p:commandButton actionListener="#{produtoBean.editar(produto)}" -->
+<!-- 									value="Editar" update="@form :#{p:component('form')}" -->
+<!-- 									ajax="true"> -->
 
-								</p:commandButton>
-							</p:column>
+<!-- 								</p:commandButton> -->
+<!-- 							</p:column> -->
 
-							<!-- <p:column style="width:32px;text-align: center">
-						<p:commandButton update="@form :#{p:component('carDetail')}"
-							actionListener="#{wBCorreios.mostrarFrete()}"
-							icon="ui-icon-search" process="@this" immediate="true"
-							title="Calcular frete">
-						</p:commandButton>
-					</p:column> -->
 						</p:dataTable>
 					</h:panelGrid>
 				</p:panel>

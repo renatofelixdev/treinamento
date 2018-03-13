@@ -4,17 +4,21 @@
 package br.ufpi.carrinho.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.ufpi.carrinho.listeners.ProdutoListener;
+
 /**
  * @author gleison
  *
  */
 @Entity
+@EntityListeners({ProdutoListener.class}) 
 public class Produto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
