@@ -90,7 +90,7 @@
 <!-- 		</dependency> -->
 	</dependencies>
 	<build>
-
+		<finalName>carrinho-compras</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
