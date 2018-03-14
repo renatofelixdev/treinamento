@@ -34,8 +34,12 @@ public class ProdutoBean implements Serializable{
 	}
 	
 	public void salvaProduto() {
-		produtoDao.salvar(produto);
+		produtoDao.atualizar(produto);
 		produto = new Produto();
+	}
+	
+	public void editar(Produto produto) {
+		this.produto = produto;
 	}
 	
 	public List<Produto> listarProdutos(){
