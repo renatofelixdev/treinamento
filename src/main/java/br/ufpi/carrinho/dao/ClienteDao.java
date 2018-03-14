@@ -12,7 +12,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import br.ufpi.carrinho.model.Cliente;
-import br.ufpi.carrinho.model.Produto;
 
 @Stateless
 public class ClienteDao implements Serializable {
@@ -65,7 +64,7 @@ public class ClienteDao implements Serializable {
 			return null;
 		}
 	}
-	
+
 	public List<Cliente> listar() {
 		TypedQuery<Cliente> query = em.createQuery("Select c from Cliente c", Cliente.class);
 		return query.getResultList();
@@ -78,10 +77,16 @@ public class ClienteDao implements Serializable {
 	}
 
 	public Cliente buscar(String cpf) {
-		TypedQuery<Cliente> query = 
-				em.createQuery("Select c from Cliente c WHERE c.cpf like :cpf", Cliente.class)
-				.setParameter("cpf", cpf);
-		return query.getSingleResult();
+		Cliente c = null;
+		try {
+			TypedQuery<Cliente> query = em.createQuery("Select c from Cliente c WHERE c.cpf like :cpf", Cliente.class)
+					.setParameter("cpf", cpf);
+			c = query.getSingleResult();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return c;
 	}
 
 }

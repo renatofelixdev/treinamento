@@ -4,11 +4,12 @@
 package br.ufpi.carrinho.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -20,7 +21,7 @@ import br.ufpi.carrinho.model.Cliente;
  *
  */
 @Named
-@SessionScoped
+@ViewScoped
 public class ClienteBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -40,6 +41,10 @@ public class ClienteBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		this.cliente = new Cliente();
+	}
+	
+	public List<Cliente> lista(){
+		return clienteDao.listar();
 	}
 
 	public void salvar() {
