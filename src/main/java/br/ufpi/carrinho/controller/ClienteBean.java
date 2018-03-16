@@ -15,6 +15,7 @@ import javax.inject.Named;
 
 import br.ufpi.carrinho.dao.ClienteDao;
 import br.ufpi.carrinho.model.Cliente;
+import br.ufpi.carrinho.util.Utils;
 
 /**
  * @author Renato
@@ -31,10 +32,6 @@ public class ClienteBean implements Serializable {
 
 	private Cliente cliente;
 
-	private String email;
-	private String senha;
-	private String cpf;
-
 	public ClienteBean() {
 	}
 
@@ -48,8 +45,7 @@ public class ClienteBean implements Serializable {
 	}
 
 	public void salvar() {
-		String cpf = this.cpf.replaceAll("\\.", "").replaceAll("\\-", "");
-		
+		String cpf = Utils.cpfSoComNumeros(cliente.getCpf());
 		if (clienteDao.buscar(cpf) == null) {
 			cliente.setCpf(cpf);
 			clienteDao.salvar(cliente);
@@ -58,7 +54,6 @@ public class ClienteBean implements Serializable {
 		}else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro!", "Já existe um cliente com o cpf " + cpf));
 		}
-
 	}
 
 	public Cliente getCliente() {
@@ -67,30 +62,6 @@ public class ClienteBean implements Serializable {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 }
