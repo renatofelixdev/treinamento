@@ -1,54 +1,32 @@
+package br.ufpi.carrinho.webservice.to;
+
 /**
  * 
  */
-package br.ufpi.carrinho.model;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
+import java.io.Serializable;
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-import br.ufpi.carrinho.listeners.ProdutoListener;
+import br.ufpi.carrinho.model.Tipo;
 
 /**
  * @author gleison
  *
  */
-@Entity
-@EntityListeners({ProdutoListener.class}) 
-public class Produto {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+public class ProdutoTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Long id;
-	
 	private String descricao;
-	
 	private Double preco;
-	
-	private Long idExterno;
-	
-	/**
-	 * @return the idExterno
-	 */
-	public Long getIdExterno() {
-		return idExterno;
-	}
-
-	/**
-	 * @param idExterno the idExterno to set
-	 */
-	public void setIdExterno(Long idExterno) {
-		this.idExterno = idExterno;
-	}
-
 	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
-	
-	public Produto() {
-	}
 
 	/**
 	 * @return the id
@@ -58,7 +36,8 @@ public class Produto {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -72,7 +51,8 @@ public class Produto {
 	}
 
 	/**
-	 * @param descricao the descricao to set
+	 * @param descricao
+	 *            the descricao to set
 	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
@@ -86,7 +66,8 @@ public class Produto {
 	}
 
 	/**
-	 * @param preco the preco to set
+	 * @param preco
+	 *            the preco to set
 	 */
 	public void setPreco(Double preco) {
 		this.preco = preco;
@@ -105,7 +86,5 @@ public class Produto {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
-	
-	
 
 }

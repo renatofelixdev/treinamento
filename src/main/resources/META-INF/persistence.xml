@@ -9,10 +9,35 @@
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect" />
-<!-- 						<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" /> -->
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" 
+				/> -->
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="false" />
 		</properties>
+
+		<!-- Classes -->
+		<class>br.ufpi.carrinho.model.Cliente</class>
+		<class>br.ufpi.carrinho.model.Compra</class>
+		<class>br.ufpi.carrinho.model.ItemCompra</class>
+		<class>br.ufpi.carrinho.model.Produto</class>
+		<class>br.ufpi.carrinho.model.Endereco</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+	</persistence-unit>
+
+	<persistence-unit name="servidor" transaction-type="JTA">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<jta-data-source>java:jboss/servidor</jta-data-source>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect" />
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" 
+				/> -->
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+		</properties>
+		<!-- Classes -->
+		<class>br.ufpi.carrinho.webservice.model.ProdutoCliente</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	</persistence-unit>
 
 </persistence>

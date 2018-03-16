@@ -13,7 +13,7 @@ public class CompraDao implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@PersistenceContext
+	@PersistenceContext(unitName="carrinho")
 	private EntityManager em;
 	
 	public CompraDao() {

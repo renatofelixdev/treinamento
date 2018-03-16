@@ -1,25 +1,20 @@
-/**
- * 
- */
-package br.ufpi.carrinho.model;
+package br.ufpi.carrinho.webservice.model;
 
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import br.ufpi.carrinho.listeners.ProdutoListener;
+import br.ufpi.carrinho.model.Tipo;
 
 /**
  * @author gleison
  *
  */
 @Entity
-@EntityListeners({ProdutoListener.class}) 
-public class Produto {
+public class ProdutoServidor {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -28,26 +23,10 @@ public class Produto {
 	
 	private Double preco;
 	
-	private Long idExterno;
-	
-	/**
-	 * @return the idExterno
-	 */
-	public Long getIdExterno() {
-		return idExterno;
-	}
-
-	/**
-	 * @param idExterno the idExterno to set
-	 */
-	public void setIdExterno(Long idExterno) {
-		this.idExterno = idExterno;
-	}
-
 	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 	
-	public Produto() {
+	public ProdutoServidor() {
 	}
 
 	/**

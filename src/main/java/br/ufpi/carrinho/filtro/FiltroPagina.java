@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ufpi.carrinho.model.Cliente;
 
-@WebFilter(urlPatterns = { "/*" })
+//@WebFilter(urlPatterns = { "/*" })
 public class FiltroPagina implements Filter {
 
 	@Override
@@ -26,35 +26,41 @@ public class FiltroPagina implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		
-		Cliente usuarioLogado = (Cliente) httpRequest.getSession().getAttribute("usuarioLogado");		
-		
-		String paginaAcessada = httpRequest.getRequestURI();
-		
-		boolean requestDoLogin = paginaAcessada.contains("/carrinho-compras/login.xhtml");
-
-		if (usuarioLogado != null) {
-
-			if (requestDoLogin) {
-				
-				httpResponse.sendRedirect("/carrinho-compras/produto.xhtml");
-				
-			} else {
-				chain.doFilter(request, response);
-			}
-		} else {
-			if (!requestDoLogin
-					&& !paginaAcessada.contains("javax.faces.resource") 
-					&& !paginaAcessada.contains("images")) {
-				
-				httpResponse.sendRedirect("/carrinho-compras/login.xhtml");
-				
-			} else {
-				chain.doFilter(request, response);
-			}
-		}
+//		HttpServletRequest httpRequest = (HttpServletRequest) request;
+//		HttpServletResponse httpResponse = (HttpServletResponse) response;
+//		
+//		Cliente usuarioLogado = (Cliente) httpRequest.getSession().getAttribute("usuarioLogado");		
+//		
+//		String paginaAcessada = httpRequest.getRequestURI();
+//		
+//		boolean requestDoLogin = paginaAcessada.contains("/carrinho-compras/login.xhtml");
+//		boolean webservice = paginaAcessada.contains("/carrinho-compras/servidor/");
+//		
+//		if (webservice) {
+//			System.out.println("Página acessada pelo webservice -> " + paginaAcessada);
+//			httpResponse.sendRedirect(paginaAcessada);
+//		}
+//
+//		if (usuarioLogado != null) {
+//
+//			if (requestDoLogin) {
+//				
+//				httpResponse.sendRedirect("/carrinho-compras/produto.xhtml");
+//				
+//			} else {
+//				chain.doFilter(request, response);
+//			}
+//		} else {
+//			if (!requestDoLogin
+//					&& !paginaAcessada.contains("javax.faces.resource") 
+//					&& !paginaAcessada.contains("images")) {
+//				
+//				httpResponse.sendRedirect("/carrinho-compras/login.xhtml");
+//				
+//			} else {
+//				chain.doFilter(request, response);
+//			}
+//		}
 
 	}
 
