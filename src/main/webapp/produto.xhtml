@@ -36,6 +36,10 @@
 					<p:commandButton value="#{msg['botao.salvar']}"
 						actionListener="#{produtoBean.salvaProduto()}" ajax="true"
 						update="@form :#{p:component('table')} :#{p:component('messages')}" />
+						
+					<p:commandButton value="#{msg['botao.importar']}" immediate="true"
+						action="#{wBProduto.importarProdutos('http://www.json-generator.com/api/json/get/cqjiDOWlsO?indent=0', true)}"
+						update="@form :#{p:component('table')}" />
 
 				</h:panelGrid>
 			</p:panel>

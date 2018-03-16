@@ -40,6 +40,17 @@ public class ClienteBean implements Serializable {
 		this.cliente = new Cliente();
 	}
 	
+	public void popularBanco() {
+		Cliente c = new Cliente();
+		
+		c.setCpf("00000000000");
+		c.setNome("Gleison Andrade");
+		c.setEmail("gleison@gmail.com");
+		c.setSenha("123456");
+		
+		clienteDao.salvar(c);
+	}
+	
 	public List<Cliente> lista(){
 		return clienteDao.listar();
 	}

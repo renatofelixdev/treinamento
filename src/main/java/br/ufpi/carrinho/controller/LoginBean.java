@@ -3,6 +3,7 @@ package br.ufpi.carrinho.controller;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -23,6 +24,16 @@ public class LoginBean {
 	
 	@Inject
 	private ClienteDao clienteDao;
+	
+	@Inject
+	private ClienteBean clienteBean;
+	
+	@PostConstruct
+	public void init() {
+		if (clienteDao.listar().size() == 0) {
+			clienteBean.popularBanco();
+		}
+	}
 	
 	public void login() {
 		Cliente clienteBD = clienteDao.procurarClientePorEmailSenha(this.email, Utils.convertStringToMd5(this.senha));
