@@ -7,7 +7,7 @@
 
 <h:head>
 
-<!--	<style>
+<style>
 .ui-layout-unit {
 	border: 0px;
 }
@@ -20,7 +20,7 @@
 .ui-layout-north .ui-layout-unit-content{
 	overflow: visible;
 }
- </style> -->
+ </style>
 </h:head>
 
 <h:body style="background:#c2c2c2">
@@ -33,7 +33,7 @@
 					<p:menuitem value="Produtos" url="produto.xhtml" />
 					<p:menuitem value="Clientes" url="cliente.xhtml" />
 					<p:menuitem value="Compras" url="compra.xhtml" />
-					<p:submenu label="usuario" style="float: right;" icon="ui-icon-person">
+					<p:submenu label="#{usuarioBean.cliente.email}" style="float: right;" icon="ui-icon-person">
 						<p:menuitem value="Sair" action="#{loginBean.logout()}"/>
 					</p:submenu>
 				</p:menubar>

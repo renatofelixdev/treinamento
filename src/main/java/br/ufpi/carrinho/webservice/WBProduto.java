@@ -61,6 +61,7 @@ public class WBProduto implements Serializable {
 		
 		WebTarget target = cliente.target(url);
 		String resposta = target.request(MediaType.APPLICATION_JSON).get(String.class);
+		
 		Gson gson = new Gson();
 		TypeToken<List<ProdutoTO>> token = new TypeToken<List<ProdutoTO>>(){};
 		

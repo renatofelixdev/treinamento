@@ -14,6 +14,7 @@ import javax.inject.Named;
 import org.primefaces.event.DragDropEvent;
 
 import br.ufpi.carrinho.dao.CompraDao;
+import br.ufpi.carrinho.dao.ProdutoDao;
 import br.ufpi.carrinho.model.Compra;
 import br.ufpi.carrinho.model.ItemCompra;
 import br.ufpi.carrinho.model.Produto;
@@ -28,19 +29,23 @@ public class CompraBean implements Serializable{
 	@Inject
 	private CompraDao compraDao;
 	
+	@Inject 
+	private ProdutoDao produtoDao;
+	
 	private Compra compra;
 	
 	private List<ItemCompra> itens;
-
-	private Produto produtoSelecionado;
 	
 	public CompraBean() {
+	}
+	
+	public List<Produto> listarProdutos(){
+		return produtoDao.listar();
 	}
 	
 	@PostConstruct
 	private void init(){
 		itens = new ArrayList<ItemCompra>();
-		this.produtoSelecionado = new Produto();
 	}
 	
 	public void realizarCompra(){
@@ -55,12 +60,7 @@ public class CompraBean implements Serializable{
 		
 		compraDao.salvar(compra);
 		itens = new ArrayList<ItemCompra>();
-		produtoSelecionado = null;
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Compra Finalizada!", "Parabéns, sua compra foi realizada com sucesso!"));
-	}
-	
-	public void adicionarNoCarrinho(Produto produto){
-		inserirNoCarrinho(produto);
 	}
 	
 	private void inserirNoCarrinho(Produto produto){
@@ -103,15 +103,5 @@ public class CompraBean implements Serializable{
 
 	public void setItens(List<ItemCompra> itens) {
 		this.itens = itens;
-	}
-
-	public Produto getProdutoSelecionado() {
-		return produtoSelecionado;
-	}
-
-	public void setProdutoSelecionado(Produto produtoSelecionado) {
-		this.produtoSelecionado = produtoSelecionado;
-	}
-	
-	
+	}	
 }

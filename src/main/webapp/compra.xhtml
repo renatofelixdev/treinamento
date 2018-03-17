@@ -15,7 +15,7 @@
 			<p:panelGrid columns="2">
 						<p:fieldset legend="Produtos">
 							<p:dataGrid id="produtosDisponiveis" var="produto"
-								value="#{produtoBean.listarProdutos()}" columns="3"
+								value="#{compraBean.listarProdutos()}" columns="3"
 								paginator="true" rows="6"
 								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								rowsPerPageTemplate="6,12,16">
@@ -54,11 +54,11 @@
 
 									<p:column headerText="">
 										<p:commandButton icon="ui-icon-trash"
-											title="#{msg['botao.remover']}"
+											title="Remover"
 											action="#{compraBean.removeItem(item)}" update="tabela" />
 									</p:column>
 									<f:facet name="footer">
-										<p:commandButton value="#{msg['botao.finalizar.compra']}"
+										<p:commandButton value="Finalizar Compra"
 											disabled="#{compraBean.itens.isEmpty()}"
 											action="#{compraBean.realizarCompra()}"
 											update=":#{p:component('form')}" />
