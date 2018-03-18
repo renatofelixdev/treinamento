@@ -47,7 +47,19 @@ public class WBProduto implements Serializable {
 	}
 	
 	/**
-	 * http://www.json-generator.com/api/json/get/cqjiDOWlsO?indent=0
+	 * http://www.json-generator.com
+	 * 
+	 * Código utilizado para gerar json no site
+	 * 
+	 * [
+		  '{{repeat(20)}}',
+		  {
+			  id: '{{index(1)}}',
+			  descricao: 'Produto json ' + '{{index()}}',
+			  preco: '{{floating(1000, 1000000)}}',
+			  tipo: '{{random("LIVROS", "MOVEIS", "ELETRONICOS")}}'
+		  }
+  		]
 	 * 
 	 * @param url
 	 * @return

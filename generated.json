@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "descricao": "Produto json 0",
+    "preco": 74346.9755,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 2,
+    "descricao": "Produto json 1",
+    "preco": 881050.0449,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 3,
+    "descricao": "Produto json 2",
+    "preco": 710940.0272,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 4,
+    "descricao": "Produto json 3",
+    "preco": 258395.7595,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 5,
+    "descricao": "Produto json 4",
+    "preco": 686943.8018,
+    "tipo": "ELETRONICOS"
+  },
+  {
+    "id": 6,
+    "descricao": "Produto json 5",
+    "preco": 449125.6629,
+    "tipo": "LIVROS"
+  },
+  {
+    "id": 7,
+    "descricao": "Produto json 6",
+    "preco": 874296.9251,
+    "tipo": "ELETRONICOS"
+  },
+  {
+    "id": 8,
+    "descricao": "Produto json 7",
+    "preco": 452217.8407,
+    "tipo": "LIVROS"
+  },
+  {
+    "id": 9,
+    "descricao": "Produto json 8",
+    "preco": 805511.8574,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 10,
+    "descricao": "Produto json 9",
+    "preco": 649397.2482,
+    "tipo": "LIVROS"
+  },
+  {
+    "id": 11,
+    "descricao": "Produto json 10",
+    "preco": 628483.851,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 12,
+    "descricao": "Produto json 11",
+    "preco": 873889.7847,
+    "tipo": "LIVROS"
+  },
+  {
+    "id": 13,
+    "descricao": "Produto json 12",
+    "preco": 470126.7033,
+    "tipo": "LIVROS"
+  },
+  {
+    "id": 14,
+    "descricao": "Produto json 13",
+    "preco": 364128.115,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 15,
+    "descricao": "Produto json 14",
+    "preco": 963149.0736,
+    "tipo": "ELETRONICOS"
+  },
+  {
+    "id": 16,
+    "descricao": "Produto json 15",
+    "preco": 580236.2612,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 17,
+    "descricao": "Produto json 16",
+    "preco": 945647.7464,
+    "tipo": "LIVROS"
+  },
+  {
+    "id": 18,
+    "descricao": "Produto json 17",
+    "preco": 372710.3956,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 19,
+    "descricao": "Produto json 18",
+    "preco": 761644.0375,
+    "tipo": "MOVEIS"
+  },
+  {
+    "id": 20,
+    "descricao": "Produto json 19",
+    "preco": 869715.5667,
+    "tipo": "LIVROS"
+  }
+]
