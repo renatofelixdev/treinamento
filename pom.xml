@@ -67,7 +67,7 @@
 <!-- 			<version>1.0.10</version> -->
 <!-- 		</dependency> -->
 
-
+<!-- DEPENDÊNCIA PARA ENVERS  -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-envers</artifactId>

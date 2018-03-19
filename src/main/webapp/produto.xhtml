@@ -54,6 +54,10 @@
 				toggleable="true" toggleSpeed="500" closeSpeed="500"
 				widgetVar="panel2" style="margin-bottom:20px">
 				<h:panelGrid columns="1">
+					<p:commandButton value="Relatório" ajax="false" style="float:right;"
+						immediate="true" icon="ui-icon-arrowthick-1-s">
+						<p:fileDownload value="#{produtoBean.downloadRelatorio()}" />
+					</p:commandButton>
 					<p:dataTable id="table" var="produto"
 						value="#{produtoBean.listarProdutos()}">
 
