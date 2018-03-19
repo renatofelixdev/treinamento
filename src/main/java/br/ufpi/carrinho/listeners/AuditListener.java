@@ -14,8 +14,11 @@ public class AuditListener implements RevisionListener {
 	@Override
 	public void newRevision(Object revisionEntity) {
 		FacesContext context = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+		HttpSession session = (HttpSession) context.
+				getExternalContext().getSession(true);
+		HttpServletRequest request = 
+				(HttpServletRequest) context.getExternalContext()
+				.getRequest();
 
 		Cliente cliente = (Cliente) session.getAttribute("usuarioLogado");
 

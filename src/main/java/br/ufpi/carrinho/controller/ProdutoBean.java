@@ -68,7 +68,8 @@ public class ProdutoBean implements Serializable{
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
 			
-			FileInputStream fileInputStream = (FileInputStream) Thread.currentThread().getContextClassLoader()
+			FileInputStream fileInputStream = (FileInputStream) 
+					Thread.currentThread().getContextClassLoader()
 					.getResourceAsStream("produtos_relatorio.jrxml");
 			
 			JasperReport jasperReport = JasperCompileManager.compileReport(fileInputStream);
