@@ -86,7 +86,7 @@ FROM Produto]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Verdana" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo}.name()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo}.getDescricao()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="430" y="0" width="122" height="20" uuid="611eaa56-c221-4468-a26e-e9ed76c33ae4"/>
