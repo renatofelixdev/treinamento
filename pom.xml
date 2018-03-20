@@ -16,8 +16,31 @@
 			<layout>default</layout>
 		</repository>
 	</repositories>
+	
+	<!-- <properties>
+		<web-inf.lib>${basedir}/src/main/webapp/WEB-INF/lib</web-inf.lib>
+		<sonar.host.url>http://10.94.14.39:9000/</sonar.host.url>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties> -->
 
 	<dependencies>
+	
+		<dependency>
+		    <groupId>ufpi.br</groupId>
+		    <artifactId>Docx4jUFPI</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+		    <scope>system</scope>
+		    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/Docx4jUFPI-0.0.1-SNAPSHOT.jar</systemPath>
+		    <type>jar</type>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.tiefaces/tiefaces -->
+		<dependency>
+			<groupId>org.tiefaces</groupId>
+			<artifactId>tiefaces</artifactId>
+			<version>1.0.9</version>
+		</dependency>
+	
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>

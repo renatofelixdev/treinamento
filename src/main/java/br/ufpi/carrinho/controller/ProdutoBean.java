@@ -2,6 +2,7 @@ package br.ufpi.carrinho.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.docx4j.org.apache.poi.util.IOUtils;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
@@ -26,6 +28,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import report.RelatorioDocx;
 
 @Named
 @ViewScoped
@@ -38,6 +41,8 @@ public class ProdutoBean implements Serializable{
 	
 	@Inject private ProdutoDao produtoDao;
 	private Produto produto;
+	
+	private StreamedContent file;
 	
 	public ProdutoBean() {
 	}
@@ -113,6 +118,32 @@ public class ProdutoBean implements Serializable{
 	public Tipo[] tipos() {
 		return Tipo.values();
 	}
+
+	public StreamedContent getFile() {
+		return file;
+	}
+
+	public void setFile(StreamedContent file) {
+		this.file = file;
+	}
 	
+	public void geraRelatorio() {
+		RelatorioDocx relatorio = new RelatorioDocx();
+		
+		InputStream is = relatorio.geraRelatorio(produtoDao.listar());
+		byte[] conteudoRelatorio = null;
+		try {
+			conteudoRelatorio = IOUtils.toByteArray(is);
+		} catch (IOException e) {			
+			e.printStackTrace();
+			System.out.println("erro no relatorio");
+		}
+
+		this.file =  new DefaultStreamedContent(
+				new ByteArrayInputStream(conteudoRelatorio),
+				"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+				"ListadeProdutos.docx");
+		System.out.println("gerou relatorio");
+	}
 
 }

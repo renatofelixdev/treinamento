@@ -2,7 +2,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets" template="template.xhtml">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:tie="http://tiefaces.org/tiefaces" template="template.xhtml">
 
 	<ui:define name="centro">
 
@@ -46,47 +47,84 @@
 				</h:panelGrid>
 			</p:panel>
 		</h:form>
-
+		<script type="text/javascript">
+function start() {
+    PF('statusDialog').show();
+}
+ 
+function stop() {
+    PF('statusDialog').hide();
+}
+</script>
+		<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+			draggable="false" closable="false" resizable="false">
+			<p:graphicImage value="resources/loading-blue-bak.gif" />
+		</p:dialog>
 
 		<h:form>
-
-			<p:panel id="toggleable2" header="Lista de Produtos"
-				toggleable="true" toggleSpeed="500" closeSpeed="500"
-				widgetVar="panel2" style="margin-bottom:20px">
-				<h:panelGrid columns="1">
-					<p:commandButton value="Relatório" ajax="false" style="float:right;"
-						immediate="true" icon="ui-icon-arrowthick-1-s">
-						<p:fileDownload value="#{produtoBean.downloadRelatorio()}" />
-					</p:commandButton>
-					<p:dataTable id="table" var="produto"
-						value="#{produtoBean.listarProdutos()}">
-
-						<p:column headerText="#{msg['produto.descricao']}">
-							<h:outputText value="#{produto.descricao}" />
-						</p:column>
-
-						<p:column headerText="#{msg['produto.tipo']}"
-							style="text-align:center;">
-							<h:outputText value="#{produto.tipo}" />
-						</p:column>
-
-						<p:column headerText="#{msg['produto.preco']}">
-							<h:outputText value="#{produto.preco}">
-								<f:convertNumber pattern="R$ #,##0.00" />
-							</h:outputText>
-						</p:column>
-						<p:column>
-							<p:commandButton actionListener="#{produtoBean.editar(produto)}"
-								value="Editar" update="@form :#{p:component('form')}"
-								ajax="true">
-
+			<p:tabView>
+				<p:tab title="Data Table">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:panel id="toggleable2" header="Lista de Produtos"
+							toggleable="true" toggleSpeed="500" closeSpeed="500"
+							widgetVar="panel2" style="margin-bottom:20px">
+							<p:commandButton value="Download Docx" ajax="false"
+								actionListener="#{produtoBean.geraRelatorio()}"
+								onclick="PrimeFaces.monitorDownload(start, stop);"
+								icon="ui-icon-arrowthick-1-s">
+								<p:fileDownload value="#{produtoBean.file}" />
 							</p:commandButton>
-						</p:column>
-					</p:dataTable>
-				</h:panelGrid>
+							<p:commandButton value="Relatório Jasper" ajax="false" style="float:right;"
+								immediate="true" icon="ui-icon-arrowthick-1-s">
+								<p:fileDownload value="#{produtoBean.downloadRelatorio()}" />
+							</p:commandButton>
+							<h:panelGrid columns="1">
+								<p:dataTable id="table" var="produto"
+									value="#{produtoBean.listarProdutos()}">
 
-			</p:panel>
+									<p:column headerText="#{msg['produto.descricao']}">
+										<h:outputText value="#{produto.descricao}" />
+									</p:column>
 
+									<p:column headerText="#{msg['produto.tipo']}"
+										style="text-align:center;">
+										<h:outputText value="#{produto.tipo}" />
+									</p:column>
+
+									<p:column headerText="#{msg['produto.preco']}">
+										<h:outputText value="#{produto.preco}">
+											<f:convertNumber pattern="R$ #,##0.00" />
+										</h:outputText>
+									</p:column>
+									<p:column>
+										<p:commandButton
+											actionListener="#{produtoBean.editar(produto)}"
+											value="Editar" update="@form :#{p:component('form')}"
+											ajax="true">
+
+										</p:commandButton>
+									</p:column>
+								</p:dataTable>
+							</h:panelGrid>
+
+						</p:panel>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Planilha">
+					<h:panelGrid columns="1" cellpadding="10">
+						<p:commandButton id="cmdExport" value="Download Planilha"
+							ajax="false" actionListener="#{planilhaProdutoBean.doExport()}">
+							<p:fileDownload value="#{planilhaProdutoBean.exportFile}" />
+						</p:commandButton>
+						
+						<tie:websheet id="sheet1" webSheetBean="#{planilhaProdutoBean}">
+						</tie:websheet>
+
+					</h:panelGrid>
+				</p:tab>
+			</p:tabView>
+
+				
 		</h:form>
 
 
