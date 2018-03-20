@@ -16,12 +16,6 @@
 			<layout>default</layout>
 		</repository>
 	</repositories>
-	
-	<!-- <properties>
-		<web-inf.lib>${basedir}/src/main/webapp/WEB-INF/lib</web-inf.lib>
-		<sonar.host.url>http://10.94.14.39:9000/</sonar.host.url>
-    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties> -->
 
 	<dependencies>
 	
