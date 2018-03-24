@@ -30,7 +30,7 @@
 						style="width:125px" required="true">
 						<f:selectItem itemLabel="Selecione um tipo" itemValue="" />
 						<f:selectItems value="#{produtoBean.tipos()}" var="tipo"
-							itemLabel="#{tipo}" itemValue="#{tipo}" />
+							itemLabel="#{tipo.descricao}" itemValue="#{tipo}" />
 					</p:selectOneMenu>
 
 
@@ -88,7 +88,7 @@ function stop() {
 
 									<p:column headerText="#{msg['produto.tipo']}"
 										style="text-align:center;">
-										<h:outputText value="#{produto.tipo}" />
+										<h:outputText value="#{produto.tipo.descricao}" />
 									</p:column>
 
 									<p:column headerText="#{msg['produto.preco']}">
