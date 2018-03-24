@@ -70,19 +70,12 @@
 			<version>1.2</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/all-themes -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.primefaces.extensions</groupId> -->
-		<!-- <artifactId>all-themes</artifactId> -->
-		<!-- <version>1.0.8</version> -->
-		<!-- <scope>compile</scope> -->
-		<!-- </dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/home -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.primefaces.themes</groupId> -->
-<!-- 			<artifactId>home</artifactId> -->
-<!-- 			<version>1.0.10</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>home</artifactId>
+			<version>1.0.10</version>
+		</dependency>
 
 <!-- DEPENDÊNCIA PARA ENVERS  -->
 		<dependency>
